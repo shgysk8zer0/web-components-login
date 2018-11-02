@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="no-js">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Login Demo</title>
+    <script type="module" src="js/index.js" async=""></script>
+    <link rel="stylesheet" href="css/styles/index.css" media="all" />
+    <link rel="import" href="components/login-form/login-form.html" name="LoginForm" async="" />
+  </head>
+  <body>
+    <header>
+      <button type="button" is="login-button" title="Sign in" form="login-form">
+        <svg class="current-color icon">
+          <use xlink:href="img/icons.svg#sign-in" />
+        </svg>
+      </button>
+      <button type="button" is="logout-button" title="Sign out" hidden="">
+        <svg class="current-color icon">
+          <use xlink:href="img/icons.svg#sign-out" />
+        </svg>
+      </button>
+    </header>
+    <aside></aside>
+    <main></main>
+    <footer></footer>
+    <login-form>
+      <svg class="current-color icon" slot="submit-icon">
+        <use xlink:href="img/icons.svg#check" />
+      </svg>
+      <svg class="current-color icon" slot="reset-icon">
+        <use xlink:href="img/icons.svg#x" />
+      </svg>
+    </login-form>
+  </body>
+</html>

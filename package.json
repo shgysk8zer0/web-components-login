@@ -1,0 +1,48 @@
+{
+  "name": "web-components-login",
+  "version": "1.0.0",
+  "description": "A WebComponents login demo",
+  "private": true,
+  "config": {
+    "icons": {
+      "input": "icons.csv",
+      "output": "img/icons.svg"
+    },
+    "port": 8001,
+    "dir": {
+      "css": "css/",
+      "js": "js/",
+      "img": "img/"
+    }
+  },
+  "scripts": {
+    "build": "npm run build:icons",
+    "build:icons": "svg-sprite-generate -c ${npm_package_config_icons_input} -o ${npm_package_config_icons_output}",
+    "preinstall": "git submodule update --init --recursive",
+    "postinstall": "npm run build",
+    "start": "python -m SimpleHTTPServer ${npm_package_config_port}",
+    "test": "eslint ${npm_package_config_dir_js} && stylelint ${npm_package_config_dir_css}"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shgysk8zer0/web-components-login.git"
+  },
+  "keywords": [
+    "web-components",
+    "passwordcredential"
+  ],
+  "author": "Chris Zuber <shgysk8zer0@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/shgysk8zer0/web-components-login/issues"
+  },
+  "homepage": "https://github.com/shgysk8zer0/web-components-login#readme",
+  "devDependencies": {
+    "eslint": "^5.8.0",
+    "eslint-plugin-async-await": "0.0.0",
+    "stylelint": "^9.7.1"
+  },
+  "dependencies": {
+    "svg-sprite-generator": "0.0.7"
+  }
+}
