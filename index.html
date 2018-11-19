@@ -6,6 +6,7 @@
     <title>Login Demo</title>
     <script type="module" src="js/index.js" async=""></script>
     <link rel="stylesheet" href="css/styles/index.css" media="all" />
+    <link rel="icon" href="img/adwaita-icons/status/avatar-default.svg" type="image/svg+xml" sizes="any" />
     <link rel="import" href="components/login-form/login-form.html" name="LoginForm" async="" />
   </head>
   <body>
@@ -26,10 +27,16 @@
     <footer></footer>
     <login-form>
       <svg class="current-color icon" slot="submit-icon">
-        <use xlink:href="img/icons.svg#check" />
+        <use xlink:href="img/icons.svg#sign-in" />
       </svg>
       <svg class="current-color icon" slot="reset-icon">
         <use xlink:href="img/icons.svg#x" />
+      </svg>
+      <svg class="current-color icon" slot="email-label">
+      	<use xlink:href="img/icons.svg#mail-read" />
+      </svg>
+      <svg class="current-color icon" slot="password-label">
+      	<use xlink:href="img/icons.svg#dialog-password" />
       </svg>
     </login-form>
   </body>

@@ -2,26 +2,33 @@
 	<style>
 		@import url("/css/styles/index.css");
 	</style>
-	<dialog id="login-form-dialog">
-		<form name="login">
-			<div>
-				<label for="login-email">
-					<slot name="email-label">Email</slot>
-				</label>
-				<input type="email" name="email" id="login-email" placeholder="user@example.com" autocomplete="email" required="" />
-			</div>
-			<div>
-				<label for="login-password">
-					<slot name="password-label">Password</slot>
-				</label>
-				<input type="password" name="password" id="login-password" placeholder="********" minlength="8" autocomplete="current-password" required="" />
-			</div>
-			<button type="submit">
-				<slot name="submit-icon">Submit</slot>
-			</button>
-			<button type="reset">
-				<slot name="reset-icon">Cancel</slot>
-			</button>
-		</form>
-	</dialog>
+	<div class="dialog-container">
+		<dialog id="login-form-dialog" class="animation-speed-normal animation-ease-in-out fadeIn">
+			<form name="login">
+				<div class="center">
+					<img is="gravatar-img" size-set="640 320 128 64 32" size="256" rating="pg" fallback="mp" sizes="10rem" class="round" />
+				</div>
+				<br />
+				<div>
+					<label for="login-email">
+						<slot name="email-label">Email</slot>
+					</label>
+					<input type="email" name="email" id="login-email" placeholder="user@example.com" autocomplete="email" required="" />
+				</div>
+				<div>
+					<label for="login-password">
+						<slot name="password-label">Password</slot>
+					</label>
+					<input type="password" name="password" id="login-password" placeholder="********" minlength="8" autocomplete="current-password" required="" />
+				</div>
+				<br />
+				<button type="submit" class="btn btn-accept">
+					<slot name="submit-icon">Submit</slot>
+				</button>
+				<button type="reset" class="btn btn-reject">
+					<slot name="reset-icon">Cancel</slot>
+				</button>
+			</form>
+		</dialog>
+	</div>
 </template>

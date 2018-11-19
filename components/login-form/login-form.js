@@ -1,5 +1,4 @@
-import {$} from '../../js/std-js/functions.js';
-import Gravatar from '../../js/gravatar.js';
+import {$, notify} from '../../js/std-js/functions.js';
 
 export default class HTMLLoginFormElement extends HTMLElement {
 	constructor() {
@@ -7,6 +6,7 @@ export default class HTMLLoginFormElement extends HTMLElement {
 		const template = document.getElementById('login-form-template').content;
 		this.attachShadow({mode: 'open'}).appendChild(document.importNode(template, true));
 
+		$('.dialog-container', this.shadowRoot).toggleClass('no-dialog', document.documentElement.classList.contains('no-dialog'));
 		this.form.addEventListener('submit', event => {
 			event.preventDefault();
 			this.login(new FormData(event.target));
@@ -16,6 +16,10 @@ export default class HTMLLoginFormElement extends HTMLElement {
 			this.close();
 		}, {
 			passive: true,
+		});
+
+		$('input[type="email"]', this.form).change(event => {
+			this.gravatar.email = event.target.value;
 		});
 	}
 
@@ -35,6 +39,10 @@ export default class HTMLLoginFormElement extends HTMLElement {
 		return this.shadowRoot.querySelector('dialog');
 	}
 
+	get gravatar() {
+		return this.dialog.querySelector('img[is="gravatar-img"]');
+	}
+
 	showModal() {
 		return this.dialog.showModal();
 	}
@@ -49,17 +57,25 @@ export default class HTMLLoginFormElement extends HTMLElement {
 
 	async login(creds) {
 		if (creds instanceof FormData) {
+			const data = Object.fromEntries(creds.entries());
+			notify('Welcome back', {
+				body: data.email,
+				icon: this.gravatar.src,
+			});
+
 			if (window.PasswordCredential instanceof Function) {
 				const passCreds = new PasswordCredential({
-					id: creds.get('email'),
-					password: creds.get('password'),
-					iconURL: new Gravatar(creds.get('email')),
+					id: data.email,
+					password: data.password,
+					iconURL: this.gravatar.src,
 				});
-				console.log(passCreds);
 				navigator.credentials.store(passCreds);
 			}
 		} else if(creds instanceof window.PasswordCredential) {
-			console.log(creds);
+			notify('Welcome back', {
+				body: creds.id,
+				icon: creds.iconURL,
+			});
 		}
 		document.dispatchEvent(new CustomEvent('login', {
 			detail: creds,

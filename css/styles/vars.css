@@ -21,11 +21,13 @@
 	--button-disabled-color: #4e4e4e;
 	--button-disabled-border: var(--button-border);
 
-	--button-confirm-background: #1FA214;
-	--button-confirm-active-background: #157a0c;
+	--button-accept-background: #1FA214;
+	--button-accept-active-background: #157a0c;
 
 	--button-reject-background: #B31414;
 	--button-reject-active-background: #7a0c0c;
+
+	--dialog-border: none;
 
 	--nav-height: 2rem;
 	--header-height: 20vh;
