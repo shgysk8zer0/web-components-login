@@ -5,8 +5,8 @@ export default class HTMLLoginFormElement extends HTMLElement {
 		super();
 		const template = document.getElementById('login-form-template').content;
 		this.attachShadow({mode: 'open'}).appendChild(document.importNode(template, true));
+		$('.dialog-container', this.shadowRoot).toggleClass('no-dialog', document.createElement('dialog') instanceof HTMLUnknownElement);
 
-		$('.dialog-container', this.shadowRoot).toggleClass('no-dialog', document.documentElement.classList.contains('no-dialog'));
 		this.form.addEventListener('submit', event => {
 			event.preventDefault();
 			this.login(new FormData(event.target));

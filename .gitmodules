@@ -16,3 +16,6 @@
 [submodule "css/animate.css"]
 	path = css/animate.css
 	url = https://github.com/daneden/animate.css.git
+[submodule "img/logos"]
+	path = img/logos
+	url = https://github.com/shgysk8zer0/logos.git
